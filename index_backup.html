@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prediksi Obesitas</title>
+  </head>
+  <body>
+    <h2>Masukkan Data:</h2>
+    <form action="/predict" method="post">
+      Age: <input type="number" name="Age" /><br />
+      Height (m): <input type="number" name="Height" /><br />
+      Weight (kg): <input type="number" name="Weight" /><br />
+      <!-- Family History with Overweight: 
+      <p>
+        <input type="radio" name="family_history_with_overweight" checked>Yes</input>
+        </p>
+        <p>
+        <input type="radio" name="family_history_with_overweight">No</input>
+        </p>
+      <br /> -->
+      <!-- FAVC (0/1): <input type="text" name="FAVC" /><br />
+      FCVC: <input type="text" name="FCVC" /><br />
+      NCP: <input type="text" name="NCP" /><br />
+      CAEC: <input type="text" name="CAEC" /><br />
+      SMOKE (0/1): <input type="text" name="SMOKE" /><br />
+      CH2O: <input type="text" name="CH2O" /><br />
+      SCC (0/1): <input type="text" name="SCC" /><br />
+      FAF: <input type="text" name="FAF" /><br />
+      TUE: <input type="text" name="TUE" /><br />
+      CALC: <input type="text" name="CALC" /><br /> -->
+      <input type="submit" value="Predict" />
+    </form>
+
+    {% if prediction_text %}
+    <h2>{{ prediction_text }}</h2>
+    {% endif %}
+  </body>
+</html>
