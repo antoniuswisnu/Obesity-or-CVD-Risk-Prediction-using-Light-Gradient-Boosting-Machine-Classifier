@@ -7,13 +7,13 @@ app = Flask(__name__)
 
 @app.route("/obesity/prediction/", methods=["POST"])
 def prediction_result():
-    model = joblib.load('random_forest_model-0.1.0.pkl')
+    model = joblib.load('lgbm_model_fix-0.1.0.pkl')
     data = request.get_json()
 
-    #gender = int(data['Gender'])
-    age = int(data['age'])
-    height = int(data['height'])
-    weight = int(data['weight'])
+    gender = int(data['Gender'])
+    age = int(data['Age'])
+    height = int(data['Height'])
+    weight = int(data['Weight'])
     family_history_with_overweight = int(data['family_history_with_overweight'])
     FAVC = int(data['FAVC'])
     FCVC = int(data['FCVC'])
@@ -27,8 +27,8 @@ def prediction_result():
     CALC = int(data['CALC'])
     MTRANS = int(data['MTRANS'])
 
-    input_data = [[age, height, weight, family_history_with_overweight, FAVC, FCVC, NCP, CAEC, SMOKE, CH2O, SCC, FAF, TUE, CALC, MTRANS]]
-    X = pd.DataFrame(input_data, columns=['age', 'height', 'weight', 'family_history_with_overweight', 'FAVC', 'FCVC', 'NCP', 'CAEC', 'SMOKE', 'CH2O', 'SCC', 'FAF', 'TUE', 'CALC', 'MTRANS'])
+    input_data = [[gender, age, height, weight, family_history_with_overweight, FAVC, FCVC, NCP, CAEC, SMOKE, CH2O, SCC, FAF, TUE, CALC, MTRANS]]
+    X = pd.DataFrame(input_data, columns=['Gender','Age', 'Height', 'Weight', 'family_history_with_overweight', 'FAVC', 'FCVC', 'NCP', 'CAEC', 'SMOKE', 'CH2O', 'SCC', 'FAF', 'TUE', 'CALC', 'MTRANS'])
 
     result = model.predict(X)
 
